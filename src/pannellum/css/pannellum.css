@@ -7,7 +7,7 @@
     width: 100%;
     height: 100%;
     font-family: Helvetica, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
-    background: #f4f4f4 url('img/background.svg') repeat;
+    background: #f4f4f4;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;

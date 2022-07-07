@@ -518,7 +518,7 @@ window.pannellum = (function(window, document, undefined) {
  */
     function parseGPanoXMP(image) {
       var reader = new FileReader();
-      reader.addEventListener('loadend', function() {
+      var callback = function() {
         var img = reader.result;
 
         // This awful browser specific test exists because iOS 8 does not work
@@ -526,13 +526,13 @@ window.pannellum = (function(window, document, undefined) {
         if (navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad).* os 8_/)) {
           var flagIndex = img.indexOf('\xff\xc2');
           if (flagIndex < 0 || flagIndex > 65536)
-            {anError(config.strings.iOS8WebGLError);}
+          {anError(config.strings.iOS8WebGLError);}
         }
 
         var start = img.indexOf('<x:xmpmeta');
         if (start > -1 && config.ignoreGPanoXMP !== true) {
           var xmpData = img.substring(start, img.indexOf('</x:xmpmeta>') + 12);
-            
+
           // Extract the requested tag from the XMP data
           var getTag = function(tag) {
             var result;
@@ -548,8 +548,8 @@ window.pannellum = (function(window, document, undefined) {
             }
             return null;
           };
-            
-            // Relevant XMP data
+
+          // Relevant XMP data
           var xmp = {
             fullWidth: getTag('GPano:FullPanoWidthPixels'),
             croppedWidth: getTag('GPano:CroppedAreaImageWidthPixels'),
@@ -560,18 +560,18 @@ window.pannellum = (function(window, document, undefined) {
             horizonPitch: getTag('GPano:PosePitchDegrees'),
             horizonRoll: getTag('GPano:PoseRollDegrees')
           };
-            
+
           if (xmp.fullWidth !== null && xmp.croppedWidth !== null &&
-                xmp.fullHeight !== null && xmp.croppedHeight !== null &&
-                xmp.topPixels !== null) {
-                
+            xmp.fullHeight !== null && xmp.croppedHeight !== null &&
+            xmp.topPixels !== null) {
+
             // Set up viewer using GPano XMP data
             if (specifiedPhotoSphereExcludes.indexOf('haov') < 0)
-              {config.haov = xmp.croppedWidth / xmp.fullWidth * 360;}
+            {config.haov = xmp.croppedWidth / xmp.fullWidth * 360;}
             if (specifiedPhotoSphereExcludes.indexOf('vaov') < 0)
-              {config.vaov = xmp.croppedHeight / xmp.fullHeight * 180;}
+            {config.vaov = xmp.croppedHeight / xmp.fullHeight * 180;}
             if (specifiedPhotoSphereExcludes.indexOf('vOffset') < 0)
-              {config.vOffset = ((xmp.topPixels + xmp.croppedHeight / 2) / xmp.fullHeight - 0.5) * -180;}
+            {config.vOffset = ((xmp.topPixels + xmp.croppedHeight / 2) / xmp.fullHeight - 0.5) * -180;}
             if (xmp.heading !== null && specifiedPhotoSphereExcludes.indexOf('northOffset') < 0) {
               // TODO: make sure this works correctly for partial panoramas
               config.northOffset = xmp.heading;
@@ -581,18 +581,24 @@ window.pannellum = (function(window, document, undefined) {
             }
             if (xmp.horizonPitch !== null && xmp.horizonRoll !== null) {
               if (specifiedPhotoSphereExcludes.indexOf('horizonPitch') < 0)
-                {config.horizonPitch = xmp.horizonPitch;}
+              {config.horizonPitch = xmp.horizonPitch;}
               if (specifiedPhotoSphereExcludes.indexOf('horizonRoll') < 0)
-                {config.horizonRoll = xmp.horizonRoll;}
+              {config.horizonRoll = xmp.horizonRoll;}
             }
-                
+
             // TODO: add support for initial view settings
           }
         }
-        
+
         // Load panorama
         panoImage.src = window.URL.createObjectURL(image);
-      });
+      }
+      try {
+        reader.addEventListener('loadend', callback);
+      } catch (e) {
+        reader.onloadend = callback;
+      }
+
       if (reader.readAsBinaryString !== undefined)
         {reader.readAsBinaryString(image);}
       else
