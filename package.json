@@ -48,5 +48,8 @@
     "component",
     "360",
     "vr"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://vansite.jfrog.io/artifactory/api/npm/vansite-npm/"
+  }
 }
