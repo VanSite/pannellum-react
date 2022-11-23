@@ -32,10 +32,13 @@
     "react": "18.1.0 ",
     "react-dom": "18.1.0 "
   },
-  "author": "farminf<farmin.f@gmail.com>",
+  "author": "farminf <farmin.f@gmail.com>",
   "homepage": "https://github.com/farminf/pannellum-react",
   "license": "MIT",
-  "repository": "https://github.com/farminf/pannellum-react",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farminf/pannellum-react.git"
+  },
   "keywords": [
     "react-component",
     "Pannellum",
