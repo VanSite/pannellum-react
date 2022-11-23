@@ -6,7 +6,6 @@ module.exports = {
       global: 'PannellumReact',
       externals: {
         react: 'React',
-        videojs: 'video.js'
       }
     }
   },

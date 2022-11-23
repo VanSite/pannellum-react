@@ -56,9 +56,8 @@ you can also use codesandbox playground
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import { Pannellum, PannellumVideo } from "pannellum-react";
+import { Pannellum } from "pannellum-react";
 import myImage from "./images/alma.jpg";
-import myVideo from "./images/video.mp4";
 
 
 const PannellumReact = () => (
@@ -92,36 +91,6 @@ const PannellumReact = () => (
         URL="https://github.com/farminf/pannellum-react"
       />
     </Pannellum>
-
-    {/******  for video 360 component *******/}
-
-    <PannellumVideo
-      video={myVideo}
-      loop
-      width="100%"
-      height="600px"
-      pitch={10}
-      yaw={180}
-      hfov={140}
-      minHfov={50}
-      maxHfov={180}
-    >
-      <Pannellum.Hotspot
-        type="custom"
-        pitch={31}
-        yaw={150}
-        handleClick={(evt , name) => this.hanldeClick(name)}
-        name="hs1"
-      />
-
-      <Pannellum.Hotspot
-        type="info"
-        pitch={31}
-        yaw={-57}
-        text="Info"
-        URL="https://github.com/farminf"
-      />
-    </PannellumVideo>
 
     </div>
 );
@@ -216,42 +185,6 @@ Moreover, you can force render the component using `forceRender()` in case if yo
 | handleClick    | Function | logging the handleClickArg | (clickHandlerFunc) fires onclick of hotspot                                                   |
 | handleClickArg | Object   | {}                         | (clickHandlerArgs) will be passed to handleClick                                              |
 | cssClass       | String   | tooltipcss                 | String is used as the CSS class for the hotspot                                               |
-
----
-
-### **Video API**
-
-these are videojs configuration properties which can be used
-
-| Name     | Type    | Default | Description                   |
-| -------- | ------- | ------- | ----------------------------- |
-| video    | String  | " "     | Path to your 360 video        |
-| loop     | Boolean | false   | Looping over video            |
-| autoplay | Boolean | true    | Play the video as page loaded |
-| controls | Boolean | false   | showing controls under        |
-| muted    | Boolean | true    | making video mute             |
-
-in addition there are also pannellum properties(panorama) which works on video
-
-| Name         | Type    | Default | Description                                                                                     |
-| ------------ | ------- | ------- | ----------------------------------------------------------------------------------------------- |
-| width        | String  | "100%"  | The width of the panorama div                                                                   |
-| height       | String  | "400px" | The height of the panorama div                                                                  |
-| video        | String  | ""      | The 360 video path                                                                              |
-| yaw          | Number  | 0       | Starting yaw position in degrees                                                                |
-| pitch        | Number  | 0       | Starting pitch position in degrees                                                              |
-| hfov         | Number  | 100     | Starting horizontal field of view in degrees                                                    |
-| maxHfov      | Number  | 150     | Maximum field of view which user can zoom (in degrees)                                          |
-| minHfov      | Number  | 50      | Minimum field of view which user can zoom (in degrees)                                          |
-| maxPitch     | Number  | 90      | Maximum field of view pitch (in degrees)                                                        |
-| minPitch     | Number  | -90     | Minimum field of view pitch (in degrees)                                                        |
-| maxYaw       | Number  | 180     | Maximum field of view yaw (in degrees)                                                          |
-| minYaw       | Number  | -180    | Minimum field of view yaw (in degrees)                                                          |
-| autoRotate   | Number  | 0       | rotation speed in degrees per second. Positive is counter-clockwise, and negative is clockwise. |
-| mouseZoom    | Boolean | true    | Enables zoom control with mouse if true                                                         |
-| hotspotDebug | Boolean | false   | For debug pupose (finding correct point for hotspot)                                            |
-
-> if you are using chrome, try to keep muted true for autoplay.
 
 ---
 

@@ -1,18 +1,13 @@
 import React from 'react';
-import expect, { createSpy, spyOn, isSpy } from 'expect';
+import expect, { spyOn } from 'expect';
 import { renderToStaticMarkup as render } from 'react-dom/server';
-import Enzyme, { shallow , mount }  from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import video from "../demo/src/images/video.mp4";
-import image from "../demo/src/images/milan.jpg";
+import image from '../demo/src/images/milan.jpg';
 
-import {  Pannellum , PannellumVideo } from 'src/';
-
-Enzyme.configure({ adapter: new Adapter() });
+import { Pannellum } from 'src/';
 
 describe('Pannellum', () => {
 
-  beforeEach(function(){
+  beforeEach(function () {
     spyOn(console, 'error');
   });
 
@@ -26,19 +21,6 @@ describe('Pannellum', () => {
     ))
       .toInclude('<div id="test" style="width:100%;height:500px"></div>');
   });
-
-  it('renders a Pannellum Video component', () => {
-    expect(render(
-      <PannellumVideo
-        id="testVideo"
-        video={video}
-        height="500px"
-        width="100%"
-      />
-    ))
-      .toInclude('<div data-vjs-player="true"><video id="testVideo" class="video-js vjs-default-skin vjs-big-play-centered" preload="none" crossOrigin="anonymous" style="width:100%;height:500px"></video></div>');
-  });
-
 
   it('renders Pannellum image with other props', () => {
     expect(render(
@@ -74,11 +56,11 @@ describe('Pannellum', () => {
         maxYaw={180}
         autoRotate={0}
         compass={false}
-        preview={""}
-        previewTitle={""}
-        previewAuthor={""}
-        title={""}
-        author={""}
+        preview={''}
+        previewTitle={''}
+        previewAuthor={''}
+        title={''}
+        author={''}
         autoLoad={false}
         orientationOnByDefault={false}
         showZoomCtrl
@@ -87,22 +69,18 @@ describe('Pannellum', () => {
         draggable
         showFullscreenCtrl
         showControls
-        onLoad={()=>{}} 
-        onScenechange={()=>{}} 
-        onScenechangefadedone={()=>{}} 
-        onError={()=>{}} 
-        onErrorcleared={()=>{}} 
-        onMousedown={()=>{}} 
-        onMouseup={()=>{}} 
-        onTouchstart={()=>{}} 
-        onTouchend={()=>{}} 
+        onLoad={() => {}}
+        onScenechange={() => {}}
+        onScenechangefadedone={() => {}}
+        onError={() => {}}
+        onErrorcleared={() => {}}
+        onMousedown={() => {}}
+        onMouseup={() => {}}
+        onTouchstart={() => {}}
+        onTouchend={() => {}}
         hotspotDebug={false}
       />
     ))
       .toInclude('<div id="test" style="width:100%;height:500px"></div>');
   });
-
-
-  
-
 });

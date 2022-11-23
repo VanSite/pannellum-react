@@ -46,34 +46,6 @@ export interface PannellumPropType {
 
 export function Pannellum(props: PannellumPropType): JSX.Element;
 
-export interface PannellumVideoPropType {
-  video?:	string;
-  loop?:	boolean;
-  autoplay?:	boolean;
-  controls?:	boolean;
-  muted?:	boolean;
-
-  width?:	string;
-  height?:	string;
-  video?:	string;
-  yaw?:	number;
-  pitch?:	number;
-  hfov?:	number;
-  maxHfov?:	number;
-  minHfov?:	number;
-  maxPitch?:	number;
-  minPitch?:	number;
-  maxYaw?:	number;
-  minYaw?:	number;
-  autoRotate?:	number;
-  mouseZoom?:	boolean;
-  hotspotDebug?:	boolean;
-
-  children?: React.ReactNode
-}
-
-export function PannellumVideo(props: PannellumVideoPropType): JSX.Element;
-
 
 export interface PannellumHotspotPropType {
   type:	'info';

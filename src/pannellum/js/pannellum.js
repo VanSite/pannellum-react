@@ -1689,17 +1689,7 @@ window.pannellum = (function(window, document, undefined) {
         {span.innerHTML = escapeHTML(hs.text);}
 
       var a;
-      if (hs.video) {
-        var video = document.createElement('video'),
-          p = hs.video;
-        if (config.basePath && !absoluteURL(p))
-          {p = config.basePath + p;}
-        video.src = sanitizeURL(p);
-        video.controls = true;
-        video.style.width = hs.width + 'px';
-        renderContainer.appendChild(div);
-        span.appendChild(video);
-      } else if (hs.image) {
+      if (hs.image) {
         var p = hs.image;
         if (config.basePath && !absoluteURL(p))
           {p = config.basePath + p;}
@@ -1739,7 +1729,7 @@ window.pannellum = (function(window, document, undefined) {
 
       if (hs.createTooltipFunc) {
         hs.createTooltipFunc(div, hs.createTooltipArgs);
-      } else if (hs.text || hs.video || hs.image) {
+      } else if (hs.text || hs.image) {
         div.classList.add('pnlm-tooltip');
         div.appendChild(span);
         span.style.width = span.scrollWidth - 20 + 'px';
