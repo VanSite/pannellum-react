@@ -46,7 +46,6 @@ export interface PannellumPropType {
 
 export function Pannellum(props: PannellumPropType): JSX.Element;
 
-
 export interface PannellumHotspotPropType {
   type:	'info';
   pitch?:	number;
