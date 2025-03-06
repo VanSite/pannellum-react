@@ -1,6 +1,13 @@
 # pannellum-react
 
 [![npm package][npm-badge]][npm]
+![MIT License](https://img.shields.io/badge/license-MIT-green)
+
+# IMPORTANT
+
+This is a fork of https://github.com/farminf/pannellum-react
+
+---
 
 React Component library for the [Pannellum](https://github.com/mpetroff/pannellum/) project.
 
