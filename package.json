@@ -17,7 +17,6 @@
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
-    "co:login": "aws codeartifact login --tool npm --repository vansite --domain vansite-npm",
     "prepare": "npm run co:login"
   },
   "peerDependencies": {
@@ -34,11 +33,11 @@
     "react-dom": "18.1.0 "
   },
   "author": "farminf <farmin.f@gmail.com>",
-  "homepage": "https://github.com/farminf/pannellum-react",
+  "homepage": "https://github.com/VanSite/pannellum-react",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/farminf/pannellum-react.git"
+    "url": "git+https://github.com/VanSite/pannellum-react.git"
   },
   "keywords": [
     "react-component",
